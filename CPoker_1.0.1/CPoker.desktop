@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CPocker
+Keywords=game;cards;poker;
+Icon=/usr/share/CPoker/Icon/CPoker_Icon.png
+Exec=/usr/bin/CPoker
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Application;Game;
+Name=CPoker

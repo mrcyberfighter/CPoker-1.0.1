@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
+<title>CPocker: An poker game against the machine.</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="cpocker-an-poker-game-against-the-machine">
+<h1 class="title">CPocker: An poker game against the machine.</h1>
+
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Writing by:</th><td class="field-body">Eddie Brüggemann</td>
+</tr>
+<tr class="field"><th class="field-name">Programmed in:</th><td class="field-body">C</td>
+</tr>
+<tr class="field"><th class="field-name">release:</th><td class="field-body">18/01/2015</td>
+</tr>
+<tr class="field"><th class="field-name">Version:</th><td class="field-body">1.0.1</td>
+</tr>
+<tr class="field"><th class="field-name">Contact:</th><td class="field-body"><a class="reference external" href="mailto:mrcyberfighter&#64;gmail.com">mrcyberfighter&#64;gmail.com</a></td>
+</tr>
+<tr class="field"><th class="field-name">Credits:</th><td class="field-body">Thank's to my beloved mother, my family and to the doctors.
+Stay away from drugs, drugs destroy your brain and your life.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<img alt="./CPoker_Icon.png" src="./CPoker_Icon.png" />
+<div class="section" id="description">
+<h1>Description</h1>
+<blockquote>
+<p><strong>CPocker</strong>: a poker game against the machine.</p>
+<p>By Start <strong>CPoker</strong> display an welcome screen with a little animation, in which
+you can choose the number of rounds you want to play against the machine
+20 per default.
+You can increase the value with the <strong>ARROW UP</strong> and decrease it with the <strong>ARROW DOWN</strong>.
+Once you have selected the number of rounds you want to play, you can press
+the <strong>Return</strong> key to start the game.</p>
+<p>By game start there only a stack of card displayed and you must press the
+<strong>&quot;Distribute cards&quot;</strong> Button so that the machine mix the cards and distribute
+it to the player and to the computer so that everyone get his fives start
+cards.</p>
+<p>The cards are presented returned to you, so that you don't know immediately
+what cards you get in hand. You can press the left mouse key by holding
+the mouse over a card to return it and discover what cards you get.</p>
+<p>Then you can throw the cards you don't want to keep by dragging it to the
+throw card frame at the middle-right from the playground.</p>
+<p><strong>Note</strong> that you can exchange the place of your cards if you want, so you can
+order it Ace you like, even move it into an emtpy frame. To get a better view
+of your hand.</p>
+<p>Then you must press the <strong>&quot;Computer play&quot;</strong> button so that the computer, your
+adversary, can throw the cards he doesn't want to keep. The cards of the
+computer are covered so that you cannot sea what the computer get in hand,
+until the round end and the cards combination comparison.</p>
+<p>The programme is implemented so that you sea your cards but the computer
+doesn't not know what cards you get in hand until the round end and the
+cards combination comparison.</p>
+<p>Then you must press the <strong>&quot;Give new cards&quot;</strong> button so that the cards you and
+the computer have throw rare replaced by news. They are presented to you
+returned again, so that you can return it or not before seeing what
+the computer get in hand or seeing.</p>
+<p>One the all the cards are returned you must press the <strong>&quot;Update score&quot;</strong>
+button. And the programme will compute the round winner, display a blinking
+round winner notify message, and update the rounds win score window at the
+down-left corner from the screen from CPoker.</p>
+<p>Now that the round is finish you must press the &quot;New round&quot; button so that
+the programme gather all cards from the playground mix it again and prepare
+all the settings for a new round.</p>
+<p>You are ready for a new round: press the <strong>&quot;Distribute cards&quot;</strong> button to
+continue playing.</p>
+<p>Wenn the count of rounds to play is reached the computer display which from
+you or the computer have win the entire game, even nobody: egality.</p>
+<p>Wenn the game is finish you can come back to the main scren by pressing The
+<strong>ESCAPE</strong> key or at every time you want it.</p>
+</blockquote>
+</div>
+<div class="section" id="cpocker-cards-combinations-hierarchy">
+<h1>CPocker cards combinations hierarchy</h1>
+<blockquote>
+<p>CPoker follow the cards combination hierarchy according to the poker rules:</p>
+<blockquote>
+<p>From the highest to the lowest combination:</p>
+<ol class="arabic">
+<li><p class="first"><strong>ROYAL QUINTE FLUSH</strong></p>
+<p>5 following cards values ending with an <em>Ace</em> from the same color (<em>Diamond</em>,
+<em>Heart</em>, <em>Spade</em>, <em>Club</em>).
+if the two players get a <strong>ROYAL QUINTE FLUSH</strong> there is an egality.
+No color have precedence on another.</p>
+</li>
+<li><p class="first"><strong>QUINTE FLUSH</strong></p>
+<p>5 following cards values not ending with an Ace from the same color
+(Diamond , Heart, Spade, Club).
+if the two players get a <strong>QUINTE FLUSH</strong> the highest card decide which is
+the winner. If the tow players get the same <strong>QUINTE FLUSH</strong> in different
+colors (<em>Diamond</em>, <em>Heart</em>, <em>Spade</em>, <em>Club</em>) they are at egality.
+No color have precedence on another.</p>
+</li>
+<li><p class="first"><strong>FOUR</strong></p>
+<p>4 same cards from the same value.
+It's impossible that the 2 players get the same four at the same time
+in a 32 cards game (from <em>7</em> to <em>Ace</em>). <strong>CPocker</strong> use a <em>32 cards game</em>.</p>
+</li>
+<li><p class="first"><strong>FULL HOUSE</strong></p>
+<p>3 same cards from the same value (a <strong>BRELAN</strong>) and 2 same cards from the
+same value (a <strong>PAIR</strong>).
+Egality is not possible with a 32 cards games, because for comparing
+2 <strong>FULL HOUSE</strong> we must compare the <strong>BRELAN</strong> values which cannot be the same
+in a 32 cards game (from <em>7</em> to <em>Ace</em>).</p>
+</li>
+<li><p class="first"><strong>COLOR</strong></p>
+<p>5 cards from the same color.
+In case the two players get a <strong>COLOR</strong> there are egality.
+No color have precedence on another.</p>
+</li>
+<li><p class="first"><strong>QUINTE</strong></p>
+<p>5 following cards values from different colors.
+In case the two players get a <strong>QUINTE</strong> the value of the highest card
+decide which is the winner.
+If the highest card is the same by the two players there is egality.
+No color have precedence on another.</p>
+</li>
+<li><p class="first"><strong>BRELAN</strong></p>
+<p>3 same cards from the same value.
+If the two players get a brelan the highest <strong>BRELAN</strong> decide which is the
+winner.
+It's impossible that the two players get the same <strong>BRELAN</strong> at the same
+time in a 32 cards game (from <em>7</em> to <em>Ace</em>).</p>
+</li>
+<li><p class="first"><strong>TWO PAIRS</strong></p>
+<p>2 times 2 sames cards from the same value.
+In case the two players get <strong>TWO PAIRS</strong> the highest value pair is compared
+and the highest value decide which is the winner. In case the highest
+pair is from the same value we compare the lowest value pair to decide
+which is the winner.
+In case the 2 players get exactly the same <strong>TWO PAIRS</strong> combination we
+compare the value of the resting card to decide which is the winner.</p>
+</li>
+<li><p class="first"><strong>PAIR</strong></p>
+<p>2 same cards from the same value.
+In case the tow players get the same value pair we compare the highest
+resting card to decide which is the winner. If a winner cannot be found
+there is an egality.</p>
+</li>
+<li><p class="first"><strong>NOTHING</strong></p>
+<p>No one of the combination. To decide which is the winner we compare the
+cards and the highest card decide which is the winner.
+If no winner is found there is an egality.</p>
+</li>
+</ol>
+</blockquote>
+</blockquote>
+</div>
+<div class="section" id="notes">
+<h1>Notes</h1>
+<blockquote>
+<p>By <strong>CPocker</strong> the computer, throw card algorithm and so, the computer strategie
+is implemented likewise his creator play poker.</p>
+<blockquote>
+<strong>So it is like you play poker against me !!!</strong></blockquote>
+<p>I implement this game by taking care at the respect of the player in sense
+that the computer doesn't not never know what you get in hand before
+comparing to take advantage of it for computing what cards the computer
+will throw. And the computer doesn't know which cards are coming next from
+the distributing heap to cash in on.</p>
+<p>I take care of:</p>
+<ul class="simple">
+<li>Right mixing the cards before every round.</li>
+<li>Respect of the cards distributing order which is inverted every round.</li>
+<li>To set the throwed cards under the heap after gathering it all after a
+round.</li>
+</ul>
+<p>By assured that the game is honest with the player.
+What i be in life with everyone and i hope you do so too.</p>
+</blockquote>
+</div>
+<div class="section" id="copyright">
+<h1>Copyright</h1>
+<blockquote>
+This programm is under copyright from the GPL GNU GENERAL PUBLIC LICENSE</blockquote>
+</div>
+</div>
+</body>
+</html>

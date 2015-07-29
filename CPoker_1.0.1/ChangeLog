@@ -1,0 +1,13 @@
+cpoker (1.0.1) ; urgency=low
+
+  * BUGFIX of the TWO PAIRS compare functions.
+   
+  * Adding of some text elements.
+
+ -- Eddie Brüggemann  <mrcyberfighter@gmail.com>  Fri, 08 May 2015 20:07:21 +0200
+
+cpoker (1.0.0) ; urgency=low
+
+  * First release.
+
+ -- Eddie Brüggemann  <mrcyberfighter@gmail.com>  Sun, 18 Jan 2015 01:02:36 +0100

@@ -1,0 +1,15 @@
+Notes:
+
+Case to BUGFIX:
+
+1) The player doesn't to be able to throw cards after pressing the  "Computer play" button in relationship to the cards giving order.
+   BUGFIXED it seems !!!
+
+2) The computer doesn't need to throw cards the programm block (eventually diplay an message.).
+
+3) The player has not throw any cards and have press the "Computer play" button -> this doesn't bug .
+
+4) Wrong new cards giving for player wenn he exchange the position of his cards.
+
+5) Must recheck the result computing algorithm case of bug by 2 pairs and nothing.
+   There a problem with NOTHING and compare.
